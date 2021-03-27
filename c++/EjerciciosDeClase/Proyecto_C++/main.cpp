@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 	    cout<<setw(2)<<"..";
 	}
 	cout<<"]\n\nIntegrantes:"<<endl;
-	cout<<"-"<<endl<<"-"<<endl<<"-"<<endl<<"-"<<endl<<"-"<<endl;
+	cout<<"-Cesar Obeth Flores Flores"<<endl<<"-Yency Carolina Matute Amaya"<<endl<<"-"<<endl<<"-"<<endl<<"-"<<endl;
 	sleep(1);
 	limpiar_pantalla();
 	
