@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 	    cout<<setw(2)<<"..";
 	}
 	cout<<"]\n\nIntegrantes:"<<endl;
-	cout<<"-Cesar Obeth Flores Flores"<<endl<<"-Yency Carolina Matute Amaya"<<endl<<"-"<<endl<<"-"<<endl<<"-"<<endl;
+	cout<<"-Cesar Obeth Flores Flores"<<endl<<"-Yency Carolina Matute Amaya"<<endl<<"-Jafet Kaleb Romero Romero"<<endl<<"-"<<endl<<"-"<<endl;
 	sleep(1);
 	limpiar_pantalla();
 	
@@ -76,12 +76,12 @@ string GetString(int tema, int nivel){
 	srand(time(NULL));
 	string palabra[7][5] =
 	{
-		{"informatica",			"historia",			"arte",			  "deporte",   "redes"},
-		{"USB",					"911",		  	 	"teatro",		  "golf",	   "OSI"},
-		{"CPU",					"muro",				"escultura",	  "tennis",	   "RJ45"},
-		{"tecnologia",			"prueba nuclear",	"pintura",		  "natacion",  "router"},
-		{"memoria RAM",			"guerra mundial",	"el grito",		  "gimnasia",  "switch"},
-		{"sistema operativo",	"peste negra",	   	"mona lisa",	  "futbol",	   "protocolo HTTPS"},
+		{"informatica",		"historia",		"arte",		 "deporte",    "redes"},
+		{"USB",			"911",	  	 	"teatro",	 "golf",	"OSI"},
+		{"CPU",			"muro",			"escultura",	 "tennis",	"RJ45"},
+		{"tecnologia",		"prueba nuclear",	"pintura",	 "natacion",   "router"},
+		{"memoria RAM",		"guerra mundial",	"el grito",	 "gimnasia",   "switch"},
+		{"sistema operativo",	"peste negra",	   	"mona lisa",	  "futbol",	"protocolo HTTPS"},
 		{"computadora portatil","pandemia mundial",	"el juicio final","basketball","fibra optica"},
 	};
 	
