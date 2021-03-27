@@ -24,8 +24,8 @@ string GetString(int tema, int nivel);
 int main(int argc, char *argv[]) {
 	//pantalla de carga 
 	for(int i=1;i<=6;i++){
-	cout<<"\tJUEGO 'EL AHORCADO'\n";
-	cout<<"\n\t    Cargando...\n\n\t  [";
+	cout<<"\t\tJUEGO 'EL AHORCADO'\n";
+	cout<<"\n\t\t    Cargando...\n\n\t\t  [";
 	for(int x=0;x<i;x++){
 	    cout<<setw(2)<<"##";
 	}
@@ -33,10 +33,10 @@ int main(int argc, char *argv[]) {
 	    cout<<setw(2)<<"..";
 	}
 	cout<<"]\n\nIntegrantes:"<<endl;
-	cout<<"-Cesar Obeth Flores Flores 20201001034"<<endl;
-	cout<<"-Yency Carolina Matute Amaya 20172000635"<<endl;
-	cout<<"-Jafet Kaleb Romero Romero 20192400032"<<endl;
-	cout<<"-Axel Rolando Espinal Calix 20201001102"<<endl;
+	cout<<"-Cesar Obeth Flores Flores    20201001034"<<endl;
+	cout<<"-Yency Carolina Matute Amaya  20172000635"<<endl;
+	cout<<"-Jafet Kaleb Romero Romero    20192400032"<<endl;
+	cout<<"-Axel Rolando Espinal Calix   20201001102"<<endl;
 	cout<<"-"<<endl;
 	sleep(1);
 	limpiar_pantalla();
