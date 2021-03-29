@@ -77,7 +77,7 @@ void menu(){
 
 string GetString(int tema, int nivel){
 	int min=nivel+nivel-1, max=(nivel*2)+1;
-	srand(time(NULL));
+	srand(time(NULL)); 
 	string palabra[7][5] =
 	{
 		{"informatica",		"historia",		"arte",		 "deporte",    "redes"},
