@@ -50,7 +50,7 @@ int main() {
 	limpiar_pantalla();
 	
 	}
-	
+	srand(time(NULL));
 	menu();
 
 	return 0;
@@ -83,20 +83,27 @@ void menu(){
 }
 
 string GetString(int tema, int nivel){
-	int min=nivel+nivel-1, max=(nivel*2)+1;
-	srand(time(NULL)); 
-	string palabra[7][3] =
-	{
-		{"informatica",		"deporte",      "redes"},
-		{"USB",			"golf",		"OSI"},
-		{"CPU",			"tennis",	"RJ45"},
-		{"tecnologia",		"natacion",     "router"},
-		{"memoria RAM",		"gimnasia",     "switch"},
-		{"sistema operativo",   "futbol",	"protocolo HTTPS"},
-		{"computadora portatil","basketball",	"fibra optica"},
-	};
+	int min=(nivel-1)*2+(nivel-1), max=(nivel*3);
+	string palabra;
 	
-	return palabra[min+rand()%(max-min)][tema];
+	switch (tema){
+		case 0:{
+			string informatica[9]={"USB","CPU","RAM","tecnologia","disco duro","webcam","sistema operativo","computadora portatil","placa madre"};
+			palabra=informatica[min+rand()%(max-min)];
+		}
+		break;
+		case 1:{
+			string deporte[9]={"golf","tennis","futbol","natacion","gimnasia","ciclismo","baloncesto","futbol americano","voleibol de playa"};
+			palabra=deporte[min+rand()%(max-min)];
+		}
+		break;
+		case 2:{
+			string redes[9]={"OSI","RJ45","DHCP","router","switch","servidor","protocolo HTTPS","fibra optica","tarjeta de red"};
+			palabra=redes[min+rand()%(max-min)];
+		}
+		break;
+	}
+	return palabra;
 }
 
 void calcularVidas(){
@@ -124,8 +131,8 @@ void gameOver() {
 	limpiar_pantalla();
 	char respuesta;
 
-	cout << "\n-------------------------------------\n" << "\t¡FIN DEL JUEGO!" << "\n-------------------------------------\n" << endl;
-	cout << "\n¿Desea jugar de nuevo? (Y/n): ";
+	cout << "\n-------------------------------------\n" << "\tFIN DEL JUEGO!" << "\n-------------------------------------\n" << endl;
+	cout << "\nDesea jugar de nuevo? (Y/n): ";
 	cin >> respuesta;
 
 	if (respuesta == 'N' || respuesta == 'n' ){ 
