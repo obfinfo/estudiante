@@ -16,6 +16,7 @@ using namespace std;
 #define SO "Windows"
 #define limpiar_pantalla() ( system("cls") )
 #endif
+
 //variables globales
 int vidas;
 string palabraParaMostrar;
@@ -33,6 +34,7 @@ void dibujarMuneco();
 void gameOver();
 
 int main() {
+	//funcion creada por: Cesar Obeth Flores Flores 
 	//pantalla de carga 
 	for(int i=1;i<=6;i++){
 	cout<<"\t\tJUEGO 'EL AHORCADO'\n";
@@ -60,6 +62,7 @@ int main() {
 }
 
 void menu(){
+	//funcion creada por: Cesar Obeth Flores Flores 
 	int tema=0,nivel=0;
 	limpiar_pantalla();
 	cout<<"\n Seleccione un tema\n"<<endl;
@@ -80,12 +83,20 @@ void menu(){
 		}else{
 			palabraOculta = GetString(tema-1,nivel);
 			calcularVidas();
+			for(int i=0;i<palabraOculta.length();i++){
+				if(palabraOculta[i]==' '){
+					palabraParaMostrar[i]=' ';
+				} else{
+					palabraParaMostrar[i]='_';
+				}
+			}
 			gameLoop();
 		}
 	}
 }
 
 string GetString(int tema, int nivel){
+	//funcion creada por: Cesar Obeth Flores Flores 
 	int min=(nivel-1)*2+(nivel-1), max=(nivel*3);
 	string palabra;
 	
@@ -110,55 +121,76 @@ string GetString(int tema, int nivel){
 }
 
 void calcularVidas(){
-	//funcion disponible
+	//funcion creada por: Axel Rolando Espinal Calix
 	//clacular las vidas depende del largo de la palabra en la variable global "palabraOculta"
-	vidas=0;
+	palabraOculta[6,10]; vidas=8;
+	palabraOculta[1,5]; vidas=12;
+	palabraOculta[11,19]; vidas=5;
 }
 
 void gameLoop(){
-	//funcion disponible
-	dibujarMuneco();
-	//pedir un caracter al usuario y verificar si esta en la variable global "palabraOculta"
-	//si esta agregarla a la variable global "palabraParaMostrar"
-	//si no esta restarle 1 a la variable global "vidas" 
-	//si vidas es 0 llamar la funcion gameOver()
-	
-	intentos =6;
+	//funcion creada por: Wilmer David Corea Lopez
 	char letra;
+	cout<<endl;
 	limpiar_pantalla();
-	
 	cout<<endl;
-	for (int i=0;i<palabraOculta.length();i++){
-        cout<<" _ ";
-	}
-	cout<<endl;
-	for (int j=0;j<10;j++){
-		dibujarMuneco();
-        cout<<"Ingrese una letra de la palabra: "<<endl;
+	for (int j=0;j<=(palabraOculta.length()+vidas+1);j++){
+        dibujarMuneco();
+		cout<<endl;
+		for (int m=0;m<palabraOculta.length();m++){
+			cout<<" "<<palabraParaMostrar[m]<<" ";
+		}
+		cout<<"\nTiene "<<vidas<<" vidas"<<endl;
+        cout<<"\nIngrese una letra de la palabra: "<<endl;
         cin>>letra;
         bool LetraNoEsta=true;
+        int contador_aciertos=0;
         for (int i=0;i<palabraOculta.length();i++){
             if (palabraOculta[i]==toupper(letra)){
                 LetraNoEsta=false;
                 palabraParaMostrar[i]=toupper(letra);
-                for (int m=0;m<palabraOculta.length();m++){
-                    cout<<" "<<palabraParaMostrar[m]<<" ";
-                }
+                cout<<endl;
+				limpiar_pantalla();
             }
         }
+        for (int k=0;k<palabraOculta.length();k++){
+            if (palabraOculta[k]==palabraParaMostrar[k]){
+                contador_aciertos++;
+            }
+        }
+        if (contador_aciertos==palabraOculta.length()){
+            cout<<"¡¡FELICIDADES HAS GANADO!!"<<endl;
+            cout<<"La palabra era: "<<palabraOculta<<endl;
+
+            j=palabraOculta.length()+vidas+1;
+
+        }
+        else{
+
         if (LetraNoEsta==true){
+			limpiar_pantalla();
             vidas--;
-			intentos--;
             cout<<"La letra no esta en la palabra, tiene "<<vidas<<" vidas"<<endl;
         }
-        if (vidas==0){gameOver();}
-        cout<<endl;
-		
+        if (vidas==0){
+                gameOver();}
+        cout<<endl;}
+	}
+	char respuesta;
+	cout << "\nDesea jugar de nuevo? (Y/n): ";
+	cin >> respuesta;
+	palabraOculta="";
+	palabraParaMostrar="";
+
+	if (respuesta == 'N' || respuesta == 'n' ){
+		cout<<""<<endl;
+	} else if (respuesta == 'Y' || respuesta == 'y'){
+		menu();
 	}
 }
 
 void dibujarMuneco(){
-	//funcion disponible
+	//funcion creada por: Yency Carolina Matute Amaya
 	//dibujar un muñecoahorcado dependiendo el numero de vidas que tenga
 	switch (intentos){
     case 6:
@@ -191,12 +223,14 @@ void dibujarMuneco(){
 
 // Funcion que se decide si el juego debe continuar
 void gameOver() {
+	//funcion creada por: Jafet Kaleb Romero Romero 
 	limpiar_pantalla();
 	char respuesta;
 
 	cout << "\n-------------------------------------\n" << "\tFIN DEL JUEGO!" << "\n-------------------------------------\n" << endl;
 	intentos=PERDEDOR;
 	dibujarMuneco();
+	cout<<"La palabra era: "<<palabraOculta<<endl;
 	cout << "\nDesea jugar de nuevo? (Y/n): ";
 	cin >> respuesta;
 
