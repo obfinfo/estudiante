@@ -8,6 +8,14 @@ def borrarPantalla(): #Definimos la función estableciendo el nombre que queramo
     elif os.name == "ce" or os.name == "nt" or os.name == "dos":
         os.system ("cls")
 	
+#variables globales
+vidas=0
+palabraParaMostrar=""
+palabraOculta=""
+GANADOR=7
+PERDEDOR=0
+intentos=0
+
 def main():
 	i=6	
 	for x in range(i):
@@ -61,5 +69,13 @@ def GetString(tema, nivel):
 	print(palabra)
 	menu()
 	return palabra
+
+#def calcularVidas():
+
+#def gameLoop():
+
+#def dibujarMuneco():
+
+#def gameOver():
 
 main()
