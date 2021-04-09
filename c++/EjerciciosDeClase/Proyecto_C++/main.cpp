@@ -4,6 +4,7 @@
 #include <string>
 #include <ctime>
 #include <iomanip>
+#include <cctype>
 
 using namespace std;
 
@@ -37,7 +38,7 @@ int main() {
 	//funcion creada por: Cesar Obeth Flores Flores 
 	//pantalla de carga 
 	for(int i=1;i<=6;i++){
-	cout<<"\t\tJUEGO 'EL AHORCADO'\n";
+	cout<<"\n\n ###   #   #   ###   ####    ####   ###   ###     ###\n#   #  #   #  #   #  #   #  #      #   #  #  #   #   #\n#####  #####  #   #  #####  #      #####  #   #  #   #\n#   #  #   #  #   #  #  #   #      #   #  #  #   #   #\n#   #  #   #   ###   #   #   ####  #   #  ###     ###\n";
 	cout<<"\n\t\t    Cargando...\n\n\t\t  [";
 	for(int x=0;x<i;x++){
 	    cout<<setw(2)<<"##";
@@ -130,7 +131,9 @@ void calcularVidas(){
 
 void gameLoop(){
 	//funcion creada por: Wilmer David Corea Lopez
-	char letra;
+	char letra;	
+	int vidasPerdidas=1;
+	intentos=6;
 	cout<<endl;
 	limpiar_pantalla();
 	cout<<endl;
@@ -168,9 +171,11 @@ void gameLoop(){
         else{
 
         if (LetraNoEsta==true){
-			limpiar_pantalla();
-            vidas--;
-            cout<<"La letra no esta en la palabra, tiene "<<vidas<<" vidas"<<endl;
+		limpiar_pantalla();
+         	vidas--;
+		vidasPerdidas++;
+		intentos=(6/vidasPerdidas);
+            cout<<"La letra: "<<letra<<", no esta en la palabra, tiene "<<vidas<<" vidas"<<endl;
         }
         if (vidas==0){
                 gameOver();}
@@ -212,7 +217,7 @@ void dibujarMuneco(){
         cout << "__________\n|         |\n|         0\n|        /|\\\n|        /\n|\n|";
         break;
     case PERDEDOR:
-        cout << " _________\n|         |\n|         0\n|        /|\\\n|        / \\\n|\n|\n";
+        cout << "__________\n|         |\n|         0\n|        /|\\\n|        / \\\n|\n|\n";
         break;
     case GANADOR:
         cout << "__________\n|         |\n|         \n|        \n|      0\n|     \\|/\n|     / \\\n";
