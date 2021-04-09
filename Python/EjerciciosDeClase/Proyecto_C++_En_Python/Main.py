@@ -19,7 +19,7 @@ intentos=0
 def main():
 	i=6	
 	for x in range(i):
-            print("\t\tJUEGO 'EL AHORCADO'\n")
+            print("\n\n ###   #   #   ###   ####    ####   ###   ###     ###\n#   #  #   #  #   #  #   #  #      #   #  #  #   #   #\n#####  #####  #   #  #####  #      #####  #   #  #   #\n#   #  #   #  #   #  #  #   #      #   #  #  #   #   #\n#   #  #   #   ###   #   #   ####  #   #  ###     ###\n")
             print("\n\t\t    Cargando...\n\n\t\t  [" + "##"*x + ".."*(i-x) +"]")
             print("\n\nIntegrantes:")
             print("-Axel Rolando Espinal Calix   20201001102")
