@@ -74,8 +74,59 @@ def GetString(tema, nivel):
 
 #def gameLoop():
 
-#def dibujarMuneco():
+def dibujarMuneco():
+	PERDEDOR = 0
+	GANADOR = 7
 
-#def gameOver():
+	if intentos == 1:
+		print("""
+ __________\n|         |\n|         0\n|        /|\\\n|        /\n|\n|
+		""")
+	elif intentos == 2:
+		print("""
+ __________\n|         |\n|         0\n|        /|\\\n|\n|\n|
+		""")
+	elif intentos == 3:
+		print("""
+ __________\n|         |\n|         0\n|        /|\n|\n|\n|
+		""")
+	elif intentos == 4:
+		print("""
+ __________\n|         |\n|         0\n|         |\n|\n|\n|
+		""")
+	elif intentos == 5:
+		print("""
+ __________\n|         |\n|         0\n|\n|\n|\n|
+		""")
+	elif intentos == 6:
+		print("""
+ __________\n|         |\n|\n|\n|\n|\n|
+		""")
+	elif intentos == PERDEDOR:
+		print("""
+ _________\n|         |\n|         0\n|        /|\\\n|        / \\\n|\n|\n
+			""")
+	elif intentos == 7:
+		print("""
+			\n|         |\n|         \n|        \n|      0\n|     \\|/\n|     / \\\n
+			""")
+
+def gameOver():
+	respuesta = str
+	borrarPantalla()
+
+	print("\n-------------------------------------\n\t¡FIN DEL JUEGO! \n-------------------------------------\n")
+	intentos = PERDEDOR
+	dibujarMuneco()
+	
+	print("La palabra oculta es: {}".format(palabraOculta))
+	respuesta = input("\n¿Desea intentar jugar de nuevo? (Y/n):")
+
+	if respuesta == "N" or respuesta == "n":
+		borrarPantalla()
+		quit()
+	elif respuesta == "Y" or respuesta == "y":
+		borrarPantalla()
+		menu()
 
 main()
