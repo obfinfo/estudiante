@@ -2,10 +2,10 @@ import time
 import os
 import random
 
-def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
-    if os.name == "posix":
+def borrarPantalla():
+    if os.name == "posix": #para windows
         os.system ("clear")
-    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos": #para linux
         os.system ("cls")
 	
 #variables globales
@@ -49,7 +49,16 @@ def menu():
 			menu()
 		else:
 		  print("game run")
-		  print(GetString(tema-1, nivel))
+		  global palabraParaMostrar
+		  global palabraOculta
+		  palabraOculta = GetString(tema-1, nivel)
+		  for x in range(len(palabraOculta)):
+			  if palabraOculta[x] ==" ":
+				  palabraParaMostrar +=" "
+			  else:
+				  palabraParaMostrar +="_"
+	
+	print(palabraParaMostrar)
 
 def GetString(tema, nivel):
 	min=(nivel-1)*2+(nivel-1)
@@ -66,8 +75,6 @@ def GetString(tema, nivel):
 		redes=("OSI","RJ45","DHCP","ROUTER","SWITCH","SERVIDOR","PROTOCOLO HTTPS","FIBRA OPTICA","TARJETA DE RED")
 		palabra=redes[random.randint(min, max)]
 
-	print(palabra)
-	menu()
 	return palabra
 
 #def calcularVidas():
