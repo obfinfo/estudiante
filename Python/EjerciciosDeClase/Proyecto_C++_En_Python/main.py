@@ -14,7 +14,7 @@ palabraParaMostrar=""
 palabraOculta=""
 GANADOR=7
 PERDEDOR=0
-intentos=0
+intentos=6
 
 def main():
 	i=6	
@@ -48,7 +48,6 @@ def menu():
 		if nivel<1 or nivel>3:
 			menu()
 		else:
-		  print("game run")
 		  global palabraParaMostrar
 		  global palabraOculta
 		  palabraOculta = GetString(tema-1, nivel)
@@ -57,8 +56,7 @@ def menu():
 				  palabraParaMostrar +=" "
 			  else:
 				  palabraParaMostrar +="_"
-	
-	print(palabraParaMostrar)
+		  gameLoop()
 
 def GetString(tema, nivel):
 	min=(nivel-1)*2+(nivel-1)
@@ -78,8 +76,6 @@ def GetString(tema, nivel):
 	return palabra
 
 #def calcularVidas():
-
-#def gameLoop():
 
 def dibujarMuneco():
 	PERDEDOR = 0
@@ -114,9 +110,7 @@ def dibujarMuneco():
  _________\n|         |\n|         0\n|        /|\\\n|        / \\\n|\n|\n
 			""")
 	elif intentos == 7:
-		print("""
-			\n|         |\n|         \n|        \n|      0\n|     \\|/\n|     / \\\n
-			""")
+		print("__________\n|         |\n|         \n|        \n|      0\n|     \\|/\n|     / \\\n")
 
 def gameOver():
 	respuesta = str
@@ -133,6 +127,65 @@ def gameOver():
 		borrarPantalla()
 		quit()
 	elif respuesta == "Y" or respuesta == "y":
+		borrarPantalla()
+		menu()
+
+def gameLoop():
+	vidas=2
+	vidasPerdidas=1
+	global intentos
+	global Lista1
+	global Lista2
+	global palabraParaMostrar
+	global palabraOculta
+	intentos=6
+	Lista1=list(palabraOculta)
+	Lista2=list(palabraParaMostrar)
+	palabraAdivinada=Lista2
+	borrarPantalla()
+	for k in palabraParaMostrar:
+		print(f" {k} ",end=" ")
+	for j in range(len(palabraOculta)+vidas):
+		dibujarMuneco()
+		LetraNoEsta = True
+		print(f"Tiene {vidas} vidas")
+		letra=input("Ingrese una letra: ").upper()
+		for i in range(len(palabraOculta)):
+			if palabraOculta[i]==letra:
+				LetraNoEsta=False
+				Lista2[i]=letra
+				borrarPantalla()
+		palabraAdivinada = " ".join(Lista2)
+		print(palabraAdivinada)
+		if Lista1 == Lista2:
+			borrarPantalla()
+			intentos=7
+			dibujarMuneco()
+			print(f"\n\nFELICIDADES HAS GANADO!\nLa palabra era {palabraOculta}")
+			break
+		if LetraNoEsta == True:
+			borrarPantalla()
+			vidas -= 1
+			vidasPerdidas+=1
+			intentos=(6/vidasPerdidas)
+			print(f"La letra {letra.upper()}, no está en la palabra, tiene {vidas} vidas")
+			palabraAdivinada = " ".join(Lista2)
+			print(palabraAdivinada)
+		if vidas==0:
+			borrarPantalla()
+			intentos=PERDEDOR
+			dibujarMuneco()
+			print(f"¡HAS PERDIDO\nLa palabra era {palabraOculta}")
+			gameOver()
+		
+	respuesta = input("\n¿Desea intentar jugar de nuevo? (Y/n):")
+	if respuesta == "N" or respuesta == "n":
+		borrarPantalla()
+		quit()
+	elif respuesta == "Y" or respuesta == "y":
+		palabraAdivinada=""
+		palabraOculta=""
+		palabraParaMostrar=""
 		borrarPantalla()
 		menu()
 
