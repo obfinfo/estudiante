@@ -122,10 +122,10 @@ string GetString(int tema, int nivel){
 
 void calcularVidas(){
 	//funcion creada por: Axel Rolando Espinal Calix
-	//clacular las vidas depende del largo de la palabra en la variable global "palabraOculta"
-	palabraOculta[6,10]; vidas=8;
-	palabraOculta[1,5]; vidas=12;
-	palabraOculta[11,19]; vidas=5;
+	vidas=palabraOculta.length()/2;
+	if(palabraOculta.length()%2 != 0){
+		vidas++;
+	}
 }
 
 void gameLoop(){
