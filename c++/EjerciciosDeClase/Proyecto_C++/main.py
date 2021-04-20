@@ -30,7 +30,14 @@ def main():
             time.sleep(1)
             borrarPantalla()
 	menu()
-
+	
+def calcularVidas():
+	global palabraOculta
+	global vidas
+	vidas=int(len(palabraOculta)/2)
+	if len(palabraOculta)%2!=0:
+		vidas +=1
+	
 def menu():
 	tema=0
 	nivel=0
@@ -51,6 +58,7 @@ def menu():
 		  global palabraParaMostrar
 		  global palabraOculta
 		  palabraOculta = GetString(tema-1, nivel)
+		  calcularVidas()
 		  for x in range(len(palabraOculta)):
 			  if palabraOculta[x] ==" ":
 				  palabraParaMostrar +=" "
@@ -75,7 +83,6 @@ def GetString(tema, nivel):
 
 	return palabra
 
-#def calcularVidas():
 
 def dibujarMuneco():
 	PERDEDOR = 0
@@ -122,6 +129,8 @@ def gameOver():
 	
 	print("La palabra oculta es: {}".format(palabraOculta))
 	respuesta = input("\n¿Desea intentar jugar de nuevo? (Y/n):")
+	while respuesta!="N" and respuesta!="n" and respuesta!="Y"  and respuesta!="y":
+		respuesta=input("\nSelección incorrecta\n¿Desea intentar jugar de nuevo? (Y/n):")
 
 	if respuesta == "N" or respuesta == "n":
 		borrarPantalla()
@@ -179,6 +188,8 @@ def gameLoop():
 			gameOver()
 		
 	respuesta = input("\n¿Desea intentar jugar de nuevo? (Y/n):")
+	while respuesta!="N" and respuesta!="n" and respuesta!="Y"  and respuesta!="y":
+		respuesta=input("\nSelección incorrecta\n¿Desea intentar jugar de nuevo? (Y/n):")
 	if respuesta == "N" or respuesta == "n":
 		borrarPantalla()
 		quit()
