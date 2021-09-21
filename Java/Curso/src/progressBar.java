@@ -11,7 +11,7 @@ public class progressBar {
         this.title = title;
         this.max = max;
 
-        
+        System.out.println("Hola mundo");
     }
 
     public void sleep(int n) {
