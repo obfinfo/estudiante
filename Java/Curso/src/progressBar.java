@@ -8,6 +8,9 @@ public class progressBar {
     public String title;
     
     public progressBar(String title, int max) {
+        this.title = title;
+        this.max = max;
+
         
     }
 
