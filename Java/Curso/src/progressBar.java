@@ -10,8 +10,6 @@ public class progressBar {
     public progressBar(String title, int max) {
         this.title = title;
         this.max = max;
-
-        System.out.println("Hola mundo");
     }
 
     public void sleep(int n) {
@@ -25,6 +23,6 @@ public class progressBar {
         
     }
     public void print() {
-        
+        System.out.print("\r Hola mundo");
     }
 }
