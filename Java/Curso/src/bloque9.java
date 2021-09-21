@@ -191,7 +191,9 @@ class ejercicio7 {
     public void ingresar(float a, int cuenta) {
         this.cuentasV[cuenta].ingresar(a);
     }
-
+    public void totring() {
+        System.out.println(this.name);
+    }
 }
 
 class cuentas{
@@ -207,7 +209,9 @@ class cuentas{
         this.balance += a;
     }
 
-    
+    public void totring() {
+        System.out.println(this.cuenta + this.balance);
+    }
 }
 
 public class bloque9 {
