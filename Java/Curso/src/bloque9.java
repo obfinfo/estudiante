@@ -192,9 +192,6 @@ class ejercicio7 {
         this.cuentasV[cuenta].ingresar(a);
     }
 
-    public void toString() {}
-        System.out.println(this.name);
-    }
 }
 
 class cuentas{
